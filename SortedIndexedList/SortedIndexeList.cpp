@@ -8,6 +8,9 @@ SortedIndexedList::SortedIndexedList(Relation r) {
 	this->nodes[0].elem = -1;
     this->nodes[0].left = 1;
     this->nodes[0].right = 2;
+    this->nodes[0].leftchildren = 0;
+    this->nodes[1].elem = -1;
+    this->nodes[2].elem = -1;
     this->relation = r;
 }
 
@@ -46,10 +49,11 @@ int SortedIndexedList::search(TComp e) const {
         }
         if (relation(node.elem, e)){
             index = node.right;
+            node = this->nodes[index];
         }
         else {
             index = node.left;
-            node.leftchildren++;
+            node = this->nodes[index];
         }
     }
     return -1;
@@ -59,30 +63,27 @@ void SortedIndexedList::add(TComp e) {
     if(this->isEmpty())
     {
         this->nodes[0].elem = e;
-        this->nodes[0].left = 1;
-        this->nodes[0].right = 2;
-        this->nodes[1].elem = -1;
-        this->nodes[2].elem = -1;
     }
     else{
-        BSTNode node = this->nodes[0];
+        BSTNode* node = &this->nodes[0];
         int index=0;
-        while(node.elem!=-1){
-            if (relation(node.elem, e)){
-                index = node.right;
-                node = this->nodes[index];
+        while(node->elem!=-1){
+            if (relation(node->elem, e)){
+                index = node->right;
+                node = &this->nodes[index];
             }
             else {
-                index = node.left;
-                node.leftchildren++;
-                node = this->nodes[index];
+                node->leftchildren++;
+                index = node->left;
+                node = &this->nodes[index];
             }
         }
-        node.elem = e;
-        node.left = index*2+1;
-        node.right = index*2+2;
-        this->nodes[node.left].elem = -1;
-        this->nodes[node.right].elem = -1;
+        node->elem = e;
+        node->leftchildren =0;
+        node->left = index*2+1;
+        node->right = index*2+2;
+        this->nodes[node->left].elem = -1;
+        this->nodes[node->right].elem = -1;
     }
 }
 

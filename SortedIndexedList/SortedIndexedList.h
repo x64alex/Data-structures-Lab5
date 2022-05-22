@@ -18,7 +18,7 @@ class SortedIndexedList {
 private:
 	friend class ListIterator;
 private:
-    BSTNode nodes[10000];
+    BSTNode nodes[100000];
     Relation relation;
 
 public:
