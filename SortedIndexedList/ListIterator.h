@@ -6,15 +6,15 @@
 class ListIterator{
 	friend class SortedIndexedList;
 private:
-    BSTNode* current;
-    std::stack<BSTNode*> stack;
+    BSTNode current;
+    std::stack<BSTNode> stack;
 	const SortedIndexedList& list;
 	ListIterator(const SortedIndexedList& list);
 public:
 	void first();
 	void next();
-	bool valid() const;
-    TComp getCurrent() const;
+	bool valid();
+    TComp getCurrent();
 };
 
 
