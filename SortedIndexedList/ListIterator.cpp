@@ -16,6 +16,12 @@ ListIterator::ListIterator(const SortedIndexedList &l):list(l) {
     node.elem = 7;
 }
 
+/*
+* Best Case: Theta(1)
+* Worst Case: Theta(1)
+* Average Case: Theta(1)
+* Total case: Theta(1)
+*/
 void ListIterator::first() {
     while(!stack.empty())stack.pop();
     BSTNode node=list.nodes[0];
@@ -27,16 +33,34 @@ void ListIterator::first() {
     else current.elem = -1;
 }
 
+/*
+* Best Case: Theta(1)
+* Worst Case: Theta(1)
+* Average Case: Theta(1)
+* Total case: Theta(1)
+*/
 TComp ListIterator::getCurrent() {
     if(!valid())throw std::runtime_error("iterator not valid");
     return current.elem;
 }
 
+/*
+* Best Case: Theta(1)
+* Worst Case: Theta(1)
+* Average Case: Theta(1)
+* Total case: Theta(1)
+*/
 bool ListIterator::valid() {
     if(current.elem== -1)return false;
     return true;
 }
 
+/*
+* Best Case: Theta(1)
+* Worst Case: Theta(1)
+* Average Case: Theta(1)
+* Total case: Theta(1)
+*/
 void ListIterator::next() {
     if (!valid())
         throw std::invalid_argument("not valid");

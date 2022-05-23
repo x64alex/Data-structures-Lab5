@@ -67,7 +67,7 @@ void testCreate() {
 		}
 		try {
 			assert(list.remove(i));
-			//assert(false);
+			assert(false);
 		} catch (exception&) {
 			assert(true);
 		}
@@ -190,7 +190,7 @@ void testAddAndSearch(Relation r) {
             if (p != -1 && v%m == 0){
             	for (int i=0; i<=v/m; i++){
             		try{
-            			//assert(list.remove(p) == v);
+            			assert(list.remove(p) == v);
             		} catch (exception&) {
 						assert(false);
 					}
@@ -350,7 +350,7 @@ void testQuantity(){
 void testAllExtended() {
 	testCreate();
 	testAddAndSearch();
-	//testDeleteSearch();
+	testDeleteSearch();
     testQuantity();
 }
 

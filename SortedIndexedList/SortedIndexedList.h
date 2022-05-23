@@ -1,4 +1,5 @@
 #pragma once
+#include <stack>
 //DO NOT INCLUDE LISTITERATOR
 
 //DO NOT CHANGE THIS PART
@@ -38,6 +39,8 @@ public:
 
 	// adds an element in the sortedList (to the corresponding position)
 	void add(TComp e);
+
+    void calStack( BSTNode node,std::stack<BSTNode> stack);
 
 	// removes an element from a given position
 	//returns the removed element

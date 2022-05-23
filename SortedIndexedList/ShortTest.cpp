@@ -30,8 +30,8 @@ void testAll(){
     iterator.first();
     assert(iterator.valid());
     assert(list.search(1) == 0);
-    //assert(list.remove(0) == 1);
-    //assert(list.size() == 0);
+    assert(list.remove(0) == 1);
+    assert(list.size() == 0);
     //assert(list.isEmpty());
 }
 
