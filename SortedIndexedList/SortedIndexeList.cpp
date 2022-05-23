@@ -30,33 +30,37 @@ bool SortedIndexedList::isEmpty() const {
 	return this->nodes[0].elem== -1;
 }
 
-TComp SortedIndexedList::getElement(int i) const{
-	//TODO - Implementation get element
-	return NULL_TCOMP;
+
+TComp SortedIndexedList::getElement(int i) {
+    if(i<0 || i>this->size()-1)
+        throw std::runtime_error("Invalid position");
+    ListIterator it{*this};
+    it.first();
+    int in=0;
+    while(it.valid() && in !=i){
+        in++;
+        it.next();
+    }
+    if(!it.valid()) return -1;
+    return it.getCurrent();
 }
 
 TComp SortedIndexedList::remove(int i) {
-	//TODO - Implementation remove
-	return NULL_TCOMP;
+    if(i<0 || i>this->size()-1)
+        throw std::runtime_error("Invalid position");
+
 }
 
 int SortedIndexedList::search(TComp e) const {
-    BSTNode node=this->nodes[0];
-    int index = 0;
-    while(node.elem!= -1){
-        if(node.elem==e){
-            return index;
-        }
-        if (relation(node.elem, e)){
-            index = node.right;
-            node = this->nodes[index];
-        }
-        else {
-            index = node.left;
-            node = this->nodes[index];
-        }
+    ListIterator it{*this};
+    it.first();
+    int i=0;
+    while(it.valid() && it.getCurrent()!=e){
+        i++;
+        it.next();
     }
-    return -1;
+    if(!it.valid()) return -1;
+    return i;
 }
 
 void SortedIndexedList::add(TComp e) {

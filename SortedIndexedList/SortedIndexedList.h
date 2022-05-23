@@ -18,7 +18,7 @@ class SortedIndexedList {
 private:
 	friend class ListIterator;
 private:
-    BSTNode nodes[100000];
+    BSTNode nodes[500000];
     Relation relation;
 
 public:
@@ -32,9 +32,9 @@ public:
 	//checks if the list is empty
 	bool isEmpty() const;
 
-	// returns an element from a position
+    // returns an element from a position
 	//throws exception if the position is not valid
-	TComp getElement(int pos) const;
+	TComp getElement(int pos);
 
 	// adds an element in the sortedList (to the corresponding position)
 	void add(TComp e);
